@@ -182,6 +182,10 @@ class Post extends Model
      */
     public function __get($key)
     {
+        if (is_null($this->getKey())) {
+            return parent::__get($key);
+        }
+
         if (!isset($this->$key)) {
             if (isset($this->meta->$key)) {
                 return $this->meta->$key;

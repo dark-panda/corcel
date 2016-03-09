@@ -168,4 +168,13 @@ class PostTest extends PHPUnit_Framework_TestCase
 
         $this->assertInstanceOf("\\Corcel\\Post", $page);
     }
+
+    public function testCustomFieldGetterWithNoPostID()
+    {
+        $post = new Post();
+
+        $post->foo = 'bar';
+        $this->assertEquals('bar', $post->foo);
+        $this->assertEquals(null, $post->meta->foo);
+    }
 }
